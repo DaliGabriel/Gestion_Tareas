@@ -13,6 +13,7 @@ class Tareas extends Model
         'tarea',
     ];
 
+    //Relacion con el usuario
     public function user()
     {
         return $this->belongsTo(User::class);

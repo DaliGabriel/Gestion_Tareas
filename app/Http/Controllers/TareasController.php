@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tareas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TareasController extends Controller
 {
@@ -15,8 +16,9 @@ class TareasController extends Controller
     public function index()
     {
         //
+        $id = Auth::id();
         return view('index', [
-            'tareas' => Tareas::with('user')->latest()->get(),
+            'tareas' => Tareas::with('user')->where('user_id',  $id)->get()
         ]);
     }
 

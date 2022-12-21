@@ -21,6 +21,10 @@ Route::get('/', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
 Route::resource('tareas', TareasController::class)
     ->only(['index', 'store'])
     ->middleware(['auth', 'verified']);
