@@ -15,7 +15,7 @@ class TareasController extends Controller
      */
     public function index()
     {
-        //
+        //Mostrar tareas del usuario
         $id = Auth::id();
         return view('index', [
             'tareas' => Tareas::with('user')->where('user_id',  $id)->get()
@@ -68,9 +68,12 @@ class TareasController extends Controller
      * @param  \App\Models\Tareas  $tareas
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tareas $tareas)
+    public function edit(Tareas $tarea)
     {
-        //
+
+        return view('edit', [
+            'tarea' => $tarea,
+        ]);
     }
 
     /**
@@ -80,9 +83,17 @@ class TareasController extends Controller
      * @param  \App\Models\Tareas  $tareas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tareas $tareas)
+    public function update(Request $request, Tareas $tarea)
     {
-        //
+        
+ 
+        $validated = $request->validate([
+            'tarea' => 'required|string|max:255',
+        ]);
+ 
+        $tarea->update($validated);
+ 
+        return redirect(route('tareas.index'));
     }
 
     /**
