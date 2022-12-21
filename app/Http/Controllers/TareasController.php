@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Tareas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class TareasController extends Controller
 {
@@ -42,7 +43,7 @@ class TareasController extends Controller
     {
         //Guardar tarea en base de datos
         $validated = $request->validate([
-            'tarea' => 'required|string|max:255',
+            'tarea' => 'required|string|max:55',
         ]);
  
         $request->user()->tareas()->create($validated);
@@ -92,7 +93,7 @@ class TareasController extends Controller
         }
  
         $validated = $request->validate([
-            'tarea' => 'required|string|max:255',
+            'tarea' => 'required|string|max:55',
         ]);
  
         $tarea->update($validated);
@@ -106,8 +107,16 @@ class TareasController extends Controller
      * @param  \App\Models\Tareas  $tareas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tareas $tareas)
+    public function destroy(Tareas $tarea)
     {
-        //
+
+        //El usuario que quiere editar el post tiene que ser el dueño
+        if ($tarea->user_id != auth()->id()){
+            abort(403, 'Upss, parece que no tienes acceso');
+        }
+ 
+        $tarea->delete();
+ 
+        return redirect(route('tareas.index'))->with('message_delete', 'Tarea Eliminada con exito');
     }
 }
