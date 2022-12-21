@@ -86,6 +86,10 @@ class TareasController extends Controller
     public function update(Request $request, Tareas $tarea)
     {
         
+        //El usuario que quiere editar el post tiene que ser el dueño
+        if ($tarea->user_id != auth()->id()){
+            abort(403, 'Upss, parece que no tienes acceso');
+        }
  
         $validated = $request->validate([
             'tarea' => 'required|string|max:255',
@@ -93,7 +97,7 @@ class TareasController extends Controller
  
         $tarea->update($validated);
  
-        return redirect(route('tareas.index'));
+        return redirect(route('tareas.index'))->with('message', 'Tarea Editada con exito');
     }
 
     /**
