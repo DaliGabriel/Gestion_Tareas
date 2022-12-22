@@ -18,11 +18,11 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    return view('dashboard');
+    return redirect('tareas');
 })->middleware(['auth', 'verified'])->name('index');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return redirect('tareas');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::resource('tareas', TareasController::class)
