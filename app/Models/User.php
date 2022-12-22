@@ -42,6 +42,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    //Relacion con las tareas
     public function tareas()
     {
         return $this->hasMany(Tareas::class);

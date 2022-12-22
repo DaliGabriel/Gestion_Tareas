@@ -10,7 +10,10 @@ class Tareas extends Model
     use HasFactory;
 
     protected $fillable = [
-        'tarea',
+        'titulo',
+        'descripcion',
+        'tags',
+        'prioridad',
     ];
 
     //Relacion con el usuario
@@ -19,4 +22,5 @@ class Tareas extends Model
         return $this->belongsTo(User::class);
     
     }
+
 }

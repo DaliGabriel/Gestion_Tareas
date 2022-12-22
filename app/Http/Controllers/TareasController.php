@@ -43,7 +43,11 @@ class TareasController extends Controller
     {
         //Guardar tarea en base de datos
         $validated = $request->validate([
-            'tarea' => 'required|string|max:55',
+            'titulo' => 'required|string|max:55',
+            'descripcion' => 'required|string|max:55',
+            'tags' => 'required',
+            'prioridad' => 'required',
+            
         ]);
  
         $request->user()->tareas()->create($validated);
@@ -93,7 +97,10 @@ class TareasController extends Controller
         }
  
         $validated = $request->validate([
-            'tarea' => 'required|string|max:55',
+            'titulo' => 'required|string|max:55',
+            'descripcion' => 'required|string|max:55',
+            'tags' => 'required',
+            'prioridad' => 'required',
         ]);
  
         $tarea->update($validated);
