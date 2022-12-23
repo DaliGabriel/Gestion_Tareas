@@ -41,10 +41,11 @@ class MailTest extends Mailable
     public function envelope()
     {
         return new Envelope(
-            from: new Address('dr.rabogrande@gmail.com', 'Nueva Tarea Registrada'),
-            replyTo: [
-                new Address('dali.rangel98@gmail.com', 'Admin'),
-            ],
+            from: new Address('dr.rabogrande@gmail.com', 'Nueva Tarea Registrada!!'),
+            // replyTo: [
+            //     new Address('dali.rangel98@gmail.com', 'Admin'),
+            // ],
+            
             subject: 'Tarea Agregada',
         );
     }
