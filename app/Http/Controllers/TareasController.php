@@ -29,9 +29,11 @@ class TareasController extends Controller
     {
         //Obtener el id del usuario actual
         $id = Auth::id();
+        $busqueda = '';
         //Mostrar tareas en relacion con el usario logeado
         return view('ver_tareas', [
-            'tareas' => Tareas::with('user')->where('user_id',  $id)->get()
+            'tareas' => Tareas::with('user')->where('user_id',  $id)->get(),
+            'busqueda' => $busqueda
         ]);
     }
 
@@ -39,17 +41,19 @@ class TareasController extends Controller
     {
         //Obtener el id del usuario actual
         $id = Auth::id();
+        $busqueda = $request->buscar;
 
         
         //Mostrar tareas en relacion con el usario logeado
         return view('ver_tareas', [
             'tareas' => Tareas::with('user')
             ->where('user_id',  $id)
-            ->where('titulo', 'LIKE', "%{$request->buscar}%")
-            ->orWhere('descripcion', 'LIKE', "%{$request->buscar}%")
-            ->orWhere('tags', 'LIKE', "%{$request->buscar}%")
-            ->orWhere('prioridad', 'LIKE', "%{$request->buscar}%")
-            ->get()
+            ->where('titulo', 'LIKE', "%{$busqueda}%")
+            ->orWhere('descripcion', 'LIKE', "%{$busqueda}%")
+            ->orWhere('tags', 'LIKE', "%{$busqueda}%")
+            ->orWhere('prioridad', 'LIKE', "%{$busqueda}%")
+            ->get(),
+            'busqueda' => $busqueda
         ]);
     }
 
