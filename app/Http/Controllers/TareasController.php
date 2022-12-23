@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Tareas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
+use App\Mail\MailTest;
+use Illuminate\Support\Facades\Mail;
 
 class TareasController extends Controller
 {
@@ -16,8 +17,9 @@ class TareasController extends Controller
      */
     public function index()
     {
-        //Mostrar tareas del usuario
+        //Obtener el id del usuario actual
         $id = Auth::id();
+        //Mostrar tareas en relacion con el usario logeado
         return view('index', [
             'tareas' => Tareas::with('user')->where('user_id',  $id)->get()
         ]);
@@ -49,11 +51,26 @@ class TareasController extends Controller
             'prioridad' => 'required',
             
         ]);
- 
-        $request->user()->tareas()->create($validated);
- 
+
         
+
+        //Insertar nueva tarea en la base de datos
+        $request->user()->tareas()->create($validated);        
+
+        //Enviar correo con los datos del formulario
+        Mail::to(Auth::user()->email)->send(
+            new MailTest(
+            $validated['titulo'],
+            $validated['descripcion'],
+            $validated['tags'],
+            $validated['prioridad'],
+            Auth::user()->name
+
+        ));
+ 
+        //Redireccionar al usuario a index
         return redirect(route('tareas.index'))->with('message', 'Tarea Añadida con exito');
+
     }
 
     /**
@@ -75,7 +92,7 @@ class TareasController extends Controller
      */
     public function edit(Tareas $tarea)
     {
-
+        //Mostrar la vista editar con los modelos de la clase tarea
         return view('edit', [
             'tarea' => $tarea,
         ]);
@@ -96,15 +113,18 @@ class TareasController extends Controller
             abort(403, 'Upss, parece que no tienes acceso');
         }
  
+        //Validar datos del formulario editar
         $validated = $request->validate([
             'titulo' => 'required|string|max:55',
             'descripcion' => 'required|string|max:55',
             'tags' => 'required',
             'prioridad' => 'required',
         ]);
- 
+        
+        //Actualizar la tarea en base al id
         $tarea->update($validated);
  
+        //Redirigir al usuario a index
         return redirect(route('tareas.index'))->with('message', 'Tarea Editada con exito');
     }
 
@@ -121,9 +141,11 @@ class TareasController extends Controller
         if ($tarea->user_id != auth()->id()){
             abort(403, 'Upss, parece que no tienes acceso');
         }
- 
+        
+        //Borrar la tarea en base al id
         $tarea->delete();
  
+        //Redirigir al usuario a index
         return redirect(route('tareas.index'))->with('message_delete', 'Tarea Eliminada con exito');
     }
 }
