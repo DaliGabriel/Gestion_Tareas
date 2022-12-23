@@ -25,6 +25,37 @@ class TareasController extends Controller
         ]);
     }
 
+    public function ver_tareas()
+    {
+        //Obtener el id del usuario actual
+        $id = Auth::id();
+        //Mostrar tareas en relacion con el usario logeado
+        return view('ver_tareas', [
+            'tareas' => Tareas::with('user')->where('user_id',  $id)->get()
+        ]);
+    }
+
+    public function buscar_tareas(Request $request)
+    {
+        //Obtener el id del usuario actual
+        $id = Auth::id();
+
+        
+        //Mostrar tareas en relacion con el usario logeado
+        return view('ver_tareas', [
+            'tareas' => Tareas::with('user')
+            ->where('user_id',  $id)
+            ->where('titulo', 'LIKE', "%{$request->buscar}%")
+            ->orWhere('descripcion', 'LIKE', "%{$request->buscar}%")
+            ->orWhere('tags', 'LIKE', "%{$request->buscar}%")
+            ->orWhere('prioridad', 'LIKE', "%{$request->buscar}%")
+            ->get()
+        ]);
+    }
+
+
+    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -58,6 +89,7 @@ class TareasController extends Controller
         $request->user()->tareas()->create($validated);        
 
         //Enviar correo con los datos del formulario
+        //
         Mail::to(Auth::user()->email)->send(
             new MailTest(
             $validated['titulo'],

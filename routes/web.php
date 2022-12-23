@@ -18,17 +18,19 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    return redirect('tareas');
+    return redirect('ver_tareas');
 })->middleware(['auth', 'verified'])->name('index');
 
 Route::get('/dashboard', function () {
-    return redirect('tareas');
+    return redirect('ver_tareas');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
 Route::resource('tareas', TareasController::class)
     ->only(['index', 'store', 'edit', 'update', 'destroy'])
     ->middleware(['auth', 'verified']);
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -37,6 +39,10 @@ Route::middleware('auth')->group(function () {
 });
 
 
+
+Route::get('/ver_tareas', [TareasController::class, 'ver_tareas'])->middleware(['auth', 'verified'])->name('ver_tareas');
+
+Route::post('/ver_tareas', [TareasController::class, 'buscar_tareas'])->middleware(['auth', 'verified'])->name('buscar_tareas');
 
 
 require __DIR__.'/auth.php';

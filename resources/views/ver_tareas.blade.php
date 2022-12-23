@@ -1,70 +1,26 @@
 <x-app-layout>
     
     <div class="max-w-2xl mx-auto p-4 sm:p-6 lg:p-8">
-        <h1 class="text-center text-3xl mb-2">Crear Tareas</h1>
-        <form method="POST" action="{{ route('tareas.store') }}">
+        <h1 class="text-center text-3xl mb-2">Ver Tareas</h1>
+
+        <form method="POST" action="{{ route('ver_tareas') }}">
             @csrf
 
             <input 
             type="text"  
-            name="titulo" 
+            name="buscar" 
             class=" mb-2 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
-            placeholder="{{ __('Título') }}"
-            value="{{old('Título')}}"
+            placeholder="{{ __('Buscar') }}"
+            value="{{old('buscar')}}"
             >
 
             <x-input-error :messages="$errors->get('titulo')" class="mt-2" />
-
-            <textarea
-                name="descripcion"
-                placeholder="{{ __('Descripción') }}"
-                class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
-            >{{ old('descripcion') }}</textarea>
-
-            <x-input-error :messages="$errors->get('descripcion')" class="mt-2" />
-
-            <select 
-            class=" mt-2 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" 
-            name="prioridad" >
-                <option value="" disabled selected>Prioridad de la tarea</option>
-                <option value="Importante">Importante</option>
-                <option value="No tan importante">No tan importante</option>
-                <option value="Nada importante">Nada importante</option>
-            </select>
-
-            <x-input-error :messages="$errors->get('prioridad')" class="mt-2" />
-
-                <label for="tags" class="inline-block text-lg mb-1 mt-2">
-                    Hashtags
-                </label>
-                <input
-                    type="text"
-                    class=" mt-1 mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
-                    name="tags"
-                    placeholder="Ejemplo: deporte, limpieza, estudio,etc"
-                    value="{{old('tags')}}"
-                />
-            <x-input-error :messages="$errors->get('tags')" class="mt-2" />
-
                 
-            <x-primary-button class="mt-4">{{ __('Agregar Tarea') }}</x-primary-button>
+            <x-primary-button class="">{{ __('Buscar Tarea') }}</x-primary-button>
             
             
         </form>
-
         
-        @if(session()->has('message'))
-        <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 3000)" class="bg-blue-100 border border-blue-400 text-blue-700 px-8 py-3 rounded relative m-4" role="alert">
-            <span class="block sm:inline">{{ session()->get('message') }}</span>
-        </div>
-        @endif
-
-        @if(session()->has('message_delete'))
-        <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 3000)" class="bg-red-100 border border-red-400 text-red-700 px-8 py-3 rounded relative m-4" role="alert">
-            <span class="block sm:inline">{{ session()->get('message_delete') }}</span>
-        </div>
-        @endif
-
         <div class="mt-6 bg-white shadow-sm rounded-lg divide-y-4">
             @foreach ($tareas as $tarea)
                 
