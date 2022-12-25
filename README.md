@@ -57,3 +57,5 @@ Tambien tendremos la opcion de ver un calendario, en donde nos marcara con un pu
 <br>
 </ul>
 <p>Esto seria todo espero les haya gustado este pequeño proyecto para administrar sus tareas si tienen alguna duda o sugerencia no duden en contactarse conmigo.</p>
+
+<a href="https://gist.github.com/hootlex/da59b91c628a6688ceb1">Como correr laravel local</a>
