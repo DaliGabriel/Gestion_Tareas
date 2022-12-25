@@ -43,8 +43,8 @@
                 />
                 <x-input-error :messages="$errors->get('tags')" class="mt-2" />
 
-                    <label for="tags" class="inline-block text-lg mb-1 mt-2">
-                        Fecha
+                    <label for="fecha" class="inline-block text-lg mb-1 mt-2">
+                        Para
                     </label>
                     <input
                         type="date"
