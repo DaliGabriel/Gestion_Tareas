@@ -74,6 +74,9 @@
                                 <label class="  text-lg font-bold" >Prioridad:</label>
                                 <p class=" text-md text-gray-900 ">{{$tarea->prioridad}}</p>
 
+                                <label class="  text-lg font-bold" >Para:</label>
+                                <p class=" text-md text-gray-900 ">{{$tarea->fecha}}</p>
+
                                 
                                 
                             </div>

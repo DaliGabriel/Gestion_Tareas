@@ -43,6 +43,17 @@
                 />
                 <x-input-error :messages="$errors->get('tags')" class="mt-2" />
 
+                    <label for="tags" class="inline-block text-lg mb-1 mt-2">
+                        Fecha
+                    </label>
+                    <input
+                        type="date"
+                        class=" mt-1 mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                        name="fecha"
+                        value="{{old('fecha', $tarea->fecha)}}"
+                    />
+                    <x-input-error :messages="$errors->get('fecha')" class="mt-2" />
+
 
             <div class="mt-4 space-x-2">
                 <x-primary-button>{{ __('Guardar') }}</x-primary-button>

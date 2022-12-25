@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('titulo')->nullable();
             $table->string('descripcion')->nullable();
             $table->string('prioridad')->nullable();
+            $table->date('fecha')->nullable();
             $table->string('tags')->nullable();
             $table->timestamps();
         });

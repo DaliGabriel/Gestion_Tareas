@@ -38,13 +38,29 @@
                     Hashtags
                 </label>
                 <input
+                    id="tags"
                     type="text"
-                    class=" mt-1 mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                    class=" mt-1  block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
                     name="tags"
                     placeholder="Ejemplo: deporte, limpieza, estudio,etc"
                     value="{{old('tags')}}"
                 />
-            <x-input-error :messages="$errors->get('tags')" class="mt-2" />
+                <x-input-error :messages="$errors->get('tags')" class="mt-2" />
+
+
+
+                <label for="fecha" class="inline-block text-lg mb-1 mt-2">
+                    Para 
+                </label>   
+                <input
+                id="fecha"
+                type="date"
+                class=" block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                name="fecha"
+                value="{{old('fecha')}}"
+                />
+                <x-input-error :messages="$errors->get('fecha')" class="mt-2" />
+
 
                 
             <x-primary-button class="mt-4">{{ __('Agregar Tarea') }}</x-primary-button>
@@ -118,7 +134,8 @@
                                 <label class="  text-lg font-bold" >Prioridad:</label>
                                 <p class=" text-md text-gray-900 ">{{$tarea->prioridad}}</p>
 
-                                
+                                <label class="  text-lg font-bold" >Para:</label>
+                                <p class=" text-md text-gray-900 ">{{$tarea->fecha}}</p>
                                 
                             </div>
                         </div>

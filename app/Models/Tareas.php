@@ -14,7 +14,9 @@ class Tareas extends Model
         'descripcion',
         'tags',
         'prioridad',
+        'fecha'
     ];
+
 
     //Relacion con el usuario
     public function user()

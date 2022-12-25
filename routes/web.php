@@ -21,6 +21,8 @@ Route::get('/', function () {
     return redirect('ver_tareas');
 })->middleware(['auth', 'verified'])->name('index');
 
+
+
 Route::get('/dashboard', function () {
     return redirect('ver_tareas');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -41,6 +43,8 @@ Route::middleware('auth')->group(function () {
 
 
 Route::get('/ver_tareas', [TareasController::class, 'ver_tareas'])->middleware(['auth', 'verified'])->name('ver_tareas');
+Route::get('/calendario', [TareasController::class, 'calendario'])->middleware(['auth', 'verified'])->name('calendario');
+
 
 Route::post('/ver_tareas', [TareasController::class, 'buscar_tareas'])->middleware(['auth', 'verified'])->name('buscar_tareas');
 

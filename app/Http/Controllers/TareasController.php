@@ -37,6 +37,16 @@ class TareasController extends Controller
         ]);
     }
 
+    public function calendario()
+    {
+        //Obtener el id del usuario actual
+        $id = Auth::id();
+        //Mostrar tareas en relacion con el usario logeado
+        return view('calendario', [
+            'tareas' => Tareas::with('user')->where('user_id',  $id)->get(),
+        ]);
+    }
+
     public function buscar_tareas(Request $request)
     {
         //Obtener el id del usuario actual
@@ -78,12 +88,14 @@ class TareasController extends Controller
      */
     public function store(Request $request)
     {
+
         //Guardar tarea en base de datos
         $validated = $request->validate([
             'titulo' => 'required|string|max:55',
             'descripcion' => 'required|string|max:55',
             'tags' => 'required',
             'prioridad' => 'required',
+            'fecha' => 'required',
             
         ]);
 
