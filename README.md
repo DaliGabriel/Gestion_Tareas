@@ -23,15 +23,37 @@ El registro esta creado con el paquete de inicio <a href="https://laravel.com/do
 </li>
 <br>
 <li >Recuperar Contraseña<br>
-<img src="./readmeFiles/recuperarContraseña.PNG"alt="Registro"/>
+<img src="./readmeFiles/recuperarContraseña.PNG"alt="Recuperar Contraseña"/>
 <br>
 Para poder usar la recuperacion de contraseña es necesario ingresar las credenciales necesarias en .env para motivos de prueba usamos <a href="https://www.mailgun.com/" target="_blank">Mailgun</a>, seleccionamos la opcion smtp e ingresamos las credenciales.
 </li>
 <br>
 <li >Ver Tareas<br>
-<img src="./readmeFiles/verTareas.PNG"alt="Registro"/>
+<img src="./readmeFiles/verTareas.PNG"alt="Ver Tareas"/>
 <br>
 Al ingresar tendremos esta vista en la cual podremos ver las tareas que hemos agregado. Tendremos un buscador el cual podremos utilizar para encontrar las tareas de nuestro interes.
 </li>
 <br>
+<li >Crear Tarea<br>
+<img src="./readmeFiles/agregarTareas.PNG"alt="Crear Tarea"/>
+<br>
+Aqui podremos crear las tareas, las cuales tendran un titulo, descripcion, tags, prioridad y fecha de realizacion.
+<br>
+Si añadimos nuestro servidor smtp y el recipiente seguro(en caso de usar mailgun en la version de prueba), nos llegaria el siguiente correo
+<img src="./readmeFiles/correoTarea.PNG"alt="Crear Tarea"/>
+</li>
+<br>
+<li >Editar Tareas<br>
+<img src="./readmeFiles/editarTarea.PNG"alt="Editar Tareas"/>
+<br>
+Tanto en crear tarea como en ver tarea tendremos la opcion de editar la tarea seleccionada tanto como de borrarla.
+</li>
+<br>
+<li >Calendario<br>
+<img src="./readmeFiles/calendario.PNG"alt="Editar Tareas"/>
+<br>
+Tambien tendremos la opcion de ver un calendario, en donde nos marcara con un puntito azul la fecha actual y de color rojo la tarea en la fecha asignada.
+</li>
+<br>
 </ul>
+<p>Esto seria todo espero les haya gustado este pequeño proyecto para administrar sus tareas si tienen alguna duda o sugerencia no duden en contactarse conmigo.</p>
