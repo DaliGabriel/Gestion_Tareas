@@ -7,15 +7,22 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-# Gestion_tareas
+<h1 align="center">Gestión de Tareas</h1>
+<p>Gestión de tareas es una aplicación sencilla en donde puedes agregar, editar y ver las tareas creadas</p>
+<h1 align="center">Funcionalidades</h1>
+<ul>
+<li >Login<br>
+<img src="./readmeFiles/login.PNG"alt="Login"/>
+El login esta creado con el paquete de inicio <a href="https://laravel.com/docs/9.x/starter-kits#laravel-breeze">breeze</a>, el cual es proporcionado por laravel.<br>
+Se le agrego el enlace de "No tienes cuenta?" con el objetivo de permitir una facil creacion de usuario.
+</li>
+<li >Registro<br>
+<img src="./readmeFiles/registro.PNG"alt="Registro"/>
+El login esta creado con el paquete de inicio breeze, el cual es proporcionado por laravel.
+</li>
+</ul>
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 
 
