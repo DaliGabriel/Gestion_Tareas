@@ -105,7 +105,7 @@ class TareasController extends Controller
         $request->user()->tareas()->create($validated);        
 
         //Enviar correo con los datos del formulario
-        //
+        //Descomentar si se va usar la notificacion de correo al agregar una tarea
         Mail::to(Auth::user()->email)->send(
             new MailTest(
             $validated['titulo'],
