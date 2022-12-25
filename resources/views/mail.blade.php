@@ -361,6 +361,7 @@ ul.social li{
             				<h3>Titulo: {{ $titulo }}</h3>
                             <h3>Descripcion: {{ $descripcion }}</h3>
                             <h3>Prioridad: {{ $prioridad}}</h3>
+							<h3>Para: {{$fecha}}</h3>
                             <h3>Tags: 
                                 @foreach($tags as $tag)
                                 {{ $tag }} 

@@ -112,7 +112,8 @@ class TareasController extends Controller
             $validated['descripcion'],
             $validated['tags'],
             $validated['prioridad'],
-            Auth::user()->name
+            Auth::user()->name,
+            $validated['fecha']
 
         ));
  

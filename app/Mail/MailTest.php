@@ -18,19 +18,21 @@ class MailTest extends Mailable
    public $tags;
    public $prioridad;
    public $name;
+   public $fecha;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($titulo, $descripcion, $tags, $prioridad, $name)
+    public function __construct($titulo, $descripcion, $tags, $prioridad, $name, $fecha)
     {
         $this->titulo = $titulo;
         $this->descripcion = $descripcion;
         $this->tags = array($tags);
         $this->prioridad = $prioridad;
         $this->name = $name;
+        $this->fecha = $fecha;
     }
 
     /**
