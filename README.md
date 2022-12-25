@@ -12,7 +12,7 @@
 <h1 align="center">Funcionalidades</h1>
 <ul>
 <li >Login<br>
-<img src="./readmeFiles/login.PNG"alt="Login"/>El login esta creado con el paquete de inicio <a href="https://laravel.com/docs/9.x/starter-kits#laravel-breeze">breeze</a>, el cual es proporcionado por laravel.<br>
+<img src="./readmeFiles/login.PNG"alt="Login"/><br>El login esta creado con el paquete de inicio <a href="https://laravel.com/docs/9.x/starter-kits#laravel-breeze">breeze</a>, el cual es proporcionado por laravel.<br>
 Se le agrego el enlace de "No tienes cuenta?" con el objetivo de permitir una facil creacion de usuario.
 </li>
 <li >Registro<br>
